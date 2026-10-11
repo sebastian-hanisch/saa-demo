@@ -250,7 +250,7 @@ st.markdown(
 |---|---|---|
 | **Die Referenzmenge (600 Szenarien) ist die wahre Verteilung** | Das ist eine Setzung, damit die Verteilung exakt bekannt ist: Die Stichprobe zieht aus genau diesen 600 Szenarien. Eine echte Verteilung hat mehr Rand als 600 Punkte; seltene Ereignisse fehlen hier. | – |
 | **Stichprobe und Verteilung stimmen überein (unabhängige Ziehung)** | Bei verschobener Verteilung (Nachfrage-Trend, seltene Ereignisse fehlen in der Stichprobe) nützt mehr Szenarien aus der alten Verteilung nichts. | – |
-| **Der Erwartungswert ist das Ziel** | Ein Risikomaß am Rand der Verteilung (Schwanz-Kosten) braucht deutlich mehr Szenarien: der Plan hängt dann an nur (1 − α) · S Szenarien. | [CVaR-Demo](https://github.com/sebastian-hanisch/cvar-demo): Risiko als Ziel, Szenarienbedarf des Risikoplans |
+| **Der Erwartungswert ist das Ziel** | Ein Risikomaß am Rand der Verteilung (Tail-Kosten) braucht deutlich mehr Szenarien: der Plan hängt dann an nur (1 − α) · S Szenarien. | [CVaR-Demo](https://github.com/sebastian-hanisch/cvar-demo): Risiko als Ziel, Szenarienbedarf des Risikoplans |
 | **Eine Instanz, 24 Ziehungen je Szenarienzahl** | Die Mittelwerte tragen einen Stichprobenfehler, die Verteilung ist schief: ein einzelner schlechter Ziehungsausreißer verschiebt das Mittel. Der Median steht deshalb daneben. | – |
 | **Kapazitäts-Vehikel mit festen Preisen** | Wie viele Szenarien man braucht, hängt an Streuung, Budget und Umlagerung (siehe die Presets) und lässt sich nicht aus einem Fall auf einen anderen übertragen. | – |
 """
