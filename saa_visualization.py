@@ -1,9 +1,27 @@
 """Plotly-Figuren: Pläne je Standort, Kosten einer Ziehung, Experiment über Szenarienzahlen, L-Shaped-Vergleich. Alle Achsen fest."""
 
+import math
 import numpy as np
 import plotly.graph_objects as go
 
 import saa_constants as C
+
+
+def _ref_line(fig, value, text, position, axis, log=True, **line_kwargs):
+    """Referenzlinie mit Beschriftung auf einer logarithmischen Achse: die Linie liegt auf dem Datenwert, die Beschriftung braucht log10 des Werts
+    (add_hline und add_vline setzen beide auf denselben Wert, die Beschriftung sitzt dann falsch und dehnt die Achse); log=False für lineare Achsen."""
+    if log and not value > 0.0:
+        return
+    pos = math.log10(value) if log else value
+    top, left = "top" in position, "left" in position
+    if axis == "y":
+        fig.add_hline(y=value, **line_kwargs)
+        if text:
+            fig.add_annotation(xref="paper", yref="y", x=0 if left else 1, y=pos, text=text, showarrow=False, xanchor="left" if left else "right", yanchor="bottom" if top else "top")
+    else:
+        fig.add_vline(x=value, **line_kwargs)
+        if text:
+            fig.add_annotation(xref="x", yref="paper", x=pos, y=1 if top else 0, text=text, showarrow=False, xanchor="right" if left else "left", yanchor="top" if top else "bottom")
 
 
 def _fixed(fig, height=340):
@@ -62,7 +80,7 @@ def build_experiment(rows) -> go.Figure:
     fig.add_trace(go.Scatter(
         x=s, y=[r["bias"] for r in rows], mode="lines+markers", name="Optimismus der Stichprobe (gepaart)",
         line=dict(color=C.COLOR_BIAS, dash="dash")))
-    fig.add_hline(y=C.GAP_TARGET, line_dash="dot", line_color="rgba(120,120,120,0.8)", annotation_text="1 %", annotation_position="top left")
+    _ref_line(fig, C.GAP_TARGET, "1 %", "top left", "y", line_dash="dot", line_color="rgba(120,120,120,0.8)")
     fig.update_xaxes(title="Szenarienzahl der Stichprobe", type="log", tickvals=s, ticktext=[str(v) for v in s])
     fig.update_yaxes(title="% der Kosten des besten Plans", type="log")
     return _fixed(fig, 380)
