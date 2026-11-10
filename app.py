@@ -63,7 +63,7 @@ st.markdown(
     """
 In der Praxis kennen Sie die Nachfrage-Verteilung nicht, sondern nur **eine Stichprobe von Szenarien**. Die **Sample Average Approximation (SAA)**
 optimiert den besten Plan auf genau dieser Stichprobe und hofft, dass er auch für die wirkliche Verteilung taugt. Diese Demo misst, **wie weit
-das trägt**: Wie viel kostet der Stichprobenplan wirklich mehr? Wie sehr täuscht der Optimalwert der Stichprobe? Und wie viele Szenarien braucht man?
+das reicht**: Wie viel kostet der Stichprobenplan wirklich mehr? Wie sehr täuscht der Optimalwert der Stichprobe? Und wie viele Szenarien braucht man?
 
 Anders als die Fall-Demos zeigt sie **ein** Verfahren an einem wachsenden Beispiel, mit demselben Kapazitäts-Vehikel wie die
 [Wurzel der Linie](https://github.com/sebastian-hanisch/newsvendor-evpi-demo); dort waren die Szenarien die Verteilung, hier sind sie eine Ziehung daraus.
@@ -153,7 +153,7 @@ if verdict == "plan_wackelt_kosten_kaum":
         f"{'unter' if d.z_error_pct < 0 else 'über'} dem wahren Wert liegt, ist die eigentliche Täuschung."
     )
 elif verdict == "alles_nah":
-    st.success(f"**Hier trägt die Stichprobe:** Plan {_de(d.plan_dev_pct)} % daneben, Mehrkosten {_de(d.gap_pct, 2)} %.")
+    st.success(f"**Hier reicht die Stichprobe:** Plan {_de(d.plan_dev_pct)} % daneben, Mehrkosten {_de(d.gap_pct, 2)} %.")
 else:
     st.warning(
         f"**Diese Ziehung ist teuer:** {_de(d.gap_pct, 2)} % Mehrkosten gegenüber dem besten Plan (Plan {_de(d.plan_dev_pct)} % daneben, "
@@ -251,7 +251,7 @@ st.markdown(
 | **Die Referenzmenge (600 Szenarien) ist die wahre Verteilung** | Das ist eine Setzung, damit die Verteilung exakt bekannt ist: Die Stichprobe zieht aus genau diesen 600 Szenarien. Eine echte Verteilung hat mehr Rand als 600 Punkte; seltene Ereignisse fehlen hier. | – |
 | **Stichprobe und Verteilung stimmen überein (unabhängige Ziehung)** | Bei verschobener Verteilung (Nachfrage-Trend, seltene Ereignisse fehlen in der Stichprobe) nützt mehr Szenarien aus der alten Verteilung nichts. | – |
 | **Der Erwartungswert ist das Ziel** | Ein Risikomaß am Rand der Verteilung (Tail-Kosten) braucht deutlich mehr Szenarien: der Plan hängt dann an nur (1 − α) · S Szenarien. | [CVaR-Demo](https://github.com/sebastian-hanisch/cvar-demo): Risiko als Ziel, Szenarienbedarf des Risikoplans |
-| **Eine Instanz, 24 Ziehungen je Szenarienzahl** | Die Mittelwerte tragen einen Stichprobenfehler, die Verteilung ist schief: ein einzelner schlechter Ziehungsausreißer verschiebt das Mittel. Der Median steht deshalb daneben. | – |
+| **Eine Instanz, 24 Ziehungen je Szenarienzahl** | Die Mittelwerte enthalten einen Stichprobenfehler, die Verteilung ist schief: ein einzelner schlechter Ziehungsausreißer verschiebt das Mittel. Der Median steht deshalb daneben. | – |
 | **Kapazitäts-Vehikel mit festen Preisen** | Wie viele Szenarien man braucht, hängt an Streuung, Budget und Umlagerung (siehe die Presets) und lässt sich nicht aus einem Fall auf einen anderen übertragen. | – |
 """
 )

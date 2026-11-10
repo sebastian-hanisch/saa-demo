@@ -21,7 +21,7 @@ Dadurch ist die Verteilung exakt bekannt, und der Plan x* ist der beste für sie
 
 - **Ziehen und optimieren:** S Szenarien, der beste Plan x_S dafür, sein Optimalwert z (ein LP über die Stichprobe).
 - **Prüfen:** x_S auf den 600 Szenarien ausgewertet, die **wahren Kosten**; die **Lücke** ist der Abstand zum besten Plan.
-- **Gepaart messen:** der Optimismus des Optimalwerts als x* auf derselben Stichprobe minus z; beide Zahlen hängen an denselben Szenarien und tragen kein Stichprobenrauschen.
+- **Gepaart messen:** der Optimismus des Optimalwerts als x* auf derselben Stichprobe minus z; beide Zahlen hängen an denselben Szenarien und enthalten kein Stichprobenrauschen.
 - **Experiment:** je Szenarienzahl (5, 10, 20, 50, 100) 24 unabhängige Ziehungen, Mittel, Median und 10./90. Perzentil.
 - **L-Shaped (Abschnitt):** dieselbe Stichprobe mit Einzel- und Mehrfachschnitt zerlegt, gegen die erweiterte Form.
 
@@ -41,7 +41,7 @@ ist erheblich, weil die Lücke schief verteilt ist; deshalb stehen Median und 90
 ## Ehrliche Grenzen
 
 - **Die Referenz ist gesetzt, nicht gefunden.** Die 600 Szenarien sind die Verteilung; eine echte Verteilung hat mehr Rand. Die Aussagen gelten für diese Verteilung.
-- **Eine Instanz, 24 Ziehungen je Szenarienzahl.** Die Mittel tragen Stichprobenfehler (die Lücke ist schief, wenige schlechte Ziehungen bewegen das Mittel). Die Ordnung und die Größenordnung sind belastbar, einzelne Prozentzahlen nicht auf die zweite Stelle.
+- **Eine Instanz, 24 Ziehungen je Szenarienzahl.** Die Mittel enthalten Stichprobenfehler (die Lücke ist schief, wenige schlechte Ziehungen bewegen das Mittel). Die Ordnung und die Größenordnung sind belastbar, einzelne Prozentzahlen nicht auf die zweite Stelle.
 - **Nur der Erwartungswert.** Ein Risikomaß am Rand braucht mehr Szenarien; das ist nicht gemessen.
 - **Nur unabhängige Ziehungen aus einer festen Verteilung.** Ein Trend oder fehlende seltene Ereignisse in der Stichprobe sind nicht abgebildet.
 - **L-Shaped zeigt Struktur, nicht Tempo.** Auf diesem Problem schlägt die erweiterte Form beide Zerlegungen; wer den Gewinn der Zerlegung sucht, braucht deutlich größere oder ganzzahlige Probleme.
